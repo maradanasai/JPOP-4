@@ -1,0 +1,8 @@
+rootProject.name = 'jpop4'
+
+include ':backendservice-parent:book:book-service'
+include ':backendservice-parent:book:book-service-api'
+
+include ':screen-parent:screen-book'
+include ':screen-parent:screen-common'
+
