@@ -4,19 +4,20 @@ package com.jpop4.aspect;
 import com.jpop4.exceptions.ValidationException;
 import com.jpop4.validation.DtoValidator;
 import com.jpop4.validation.ValidationService;
+
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.reflect.MethodSignature;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 
 import java.lang.reflect.Parameter;
 
 @Aspect
-@Configuration
 public class ValidationAspect {
     private static final Logger LOG = LoggerFactory.getLogger(ValidationAspect.class);
 

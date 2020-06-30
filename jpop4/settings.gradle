@@ -5,4 +5,7 @@ include ':backendservice-parent:book:book-service-api'
 
 include ':screen-parent:screen-book'
 include ':screen-parent:screen-common'
+include ':webapp-launcher'
+include 'domain'
+include 'db'
 

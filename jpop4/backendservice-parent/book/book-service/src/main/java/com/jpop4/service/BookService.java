@@ -2,8 +2,8 @@ package com.jpop4.service;
 
 import com.jpop4.api.book.BookApi;
 import com.jpop4.converter.BookMapper;
+import com.jpop4.domain.repository.BookRepository;
 import com.jpop4.dto.book.BookDto;
-import com.jpop4.repository.BookRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,14 +1,11 @@
-package com.jpop4.repository.entity;
+package com.jpop4.domain.common;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-import java.math.BigInteger;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import java.math.BigInteger;
+
 
 @Entity
 @Table(name = "books")
