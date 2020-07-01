@@ -1,7 +1,6 @@
 package com.jpop4.webapp.config;
 
 import com.jpop4.config.BaseDbConfig;
-import com.jpop4.config.ScreenCommonConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public abstract class AbstractWebInitializer  extends AbstractAnnotationConfigDispatcherServletInitializer {
