@@ -1,4 +1,4 @@
-package com.jpop4;
+package com.jpop4.initializer;
 
 import com.jpop4.config.BaseDbConfig;
 import com.jpop4.config.BookConfig;

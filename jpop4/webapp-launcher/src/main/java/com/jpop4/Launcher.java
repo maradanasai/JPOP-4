@@ -1,5 +1,7 @@
 package com.jpop4;
 
+import com.jpop4.initializer.BookServiceWebInitializer;
+
 import org.apache.catalina.Context;
 import org.apache.catalina.Lifecycle;
 import org.apache.catalina.LifecycleException;
@@ -8,13 +10,16 @@ import org.apache.catalina.Server;
 import org.apache.catalina.startup.ContextConfig;
 import org.apache.catalina.startup.Tomcat;
 import org.apache.tomcat.util.scan.StandardJarScanner;
+
 import org.slf4j.LoggerFactory;
+
 import org.springframework.web.SpringServletContainerInitializer;
 import org.springframework.web.WebApplicationInitializer;
 
 import java.util.HashSet;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
+
 
 public class Launcher {
     public static void main(String[] args) throws LifecycleException {
@@ -32,7 +37,7 @@ public class Launcher {
             }
         });
 
-        addContext(BookServiceWebInitializer::new, tomcat, "");
+        addContext(BookServiceWebInitializer::new, tomcat, "/jpop4");
         tomcat.start();
         server.await();
     }
