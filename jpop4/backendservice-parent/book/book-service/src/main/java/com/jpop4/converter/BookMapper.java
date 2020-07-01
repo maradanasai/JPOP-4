@@ -8,7 +8,7 @@ import java.util.List;
 
 @Mapper
 public interface BookMapper {
-    BookDto toBookDto(Book entity);
+    BookDto toBookDto(Book bookEntity);
     Book toBook(BookDto bookDto);
-    List<BookDto> toBookDtos(Iterable<Book> entities);
+    List<BookDto> toBookDtos(Iterable<Book> bookEntities);
 }

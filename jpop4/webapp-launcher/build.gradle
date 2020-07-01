@@ -7,8 +7,11 @@ final def tomcatVersion = '9.0.27'
 dependencies {
     compile project(':backendservice-parent:book:book-service-api')
     compile project(':backendservice-parent:book:book-service')
+    compile project(':backendservice-parent:user:user-service-api')
+    compile project(':backendservice-parent:user:user-service')
     compile project(':screen-parent:screen-common')
     compile project(':screen-parent:screen-book')
+    compile project(':screen-parent:screen-user')
     compile project(':db')
 
     compile "org.apache.tomcat.embed:tomcat-embed-core:$tomcatVersion"

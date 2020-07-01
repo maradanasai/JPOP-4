@@ -2,8 +2,11 @@ rootProject.name = 'jpop4'
 
 include ':backendservice-parent:book:book-service'
 include ':backendservice-parent:book:book-service-api'
+include ':backendservice-parent:user:user-service'
+include ':backendservice-parent:user:user-service-api'
 
 include ':screen-parent:screen-book'
+include ':screen-parent:screen-user'
 include ':screen-parent:screen-common'
 include ':webapp-launcher'
 include 'domain'

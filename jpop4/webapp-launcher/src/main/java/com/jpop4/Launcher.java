@@ -1,6 +1,7 @@
 package com.jpop4;
 
-import com.jpop4.initializer.BookServiceWebInitializer;
+import com.jpop4.webapp.config.BookServiceWebInitializer;
+import com.jpop4.webapp.config.UserServiceWebInitializer;
 
 import org.apache.catalina.Context;
 import org.apache.catalina.Lifecycle;
@@ -37,7 +38,8 @@ public class Launcher {
             }
         });
 
-        addContext(BookServiceWebInitializer::new, tomcat, "/jpop4");
+        addContext(BookServiceWebInitializer::new, tomcat, "/bookapi");
+        addContext(UserServiceWebInitializer::new, tomcat, "/userapi");
         tomcat.start();
         server.await();
     }
