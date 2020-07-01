@@ -12,6 +12,8 @@ dependencies {
     compile project(':screen-parent:screen-common')
     compile project(':screen-parent:screen-book')
     compile project(':screen-parent:screen-user')
+    compile project(':api-documentation')
+    compile project(':domain')
     compile project(':db')
 
     compile "org.apache.tomcat.embed:tomcat-embed-core:$tomcatVersion"

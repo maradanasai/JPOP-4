@@ -11,7 +11,7 @@ public class BookServiceWebInitializer extends AbstractWebInitializer {
         return new Class[] {
                 BookConfig.class,
                 BookScreenConfig.class,
-                ScreenCommonConfig.class
+                ScreenCommonConfig.class,
         };
     }
 }

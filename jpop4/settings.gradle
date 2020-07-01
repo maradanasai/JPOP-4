@@ -11,4 +11,5 @@ include ':screen-parent:screen-common'
 include ':webapp-launcher'
 include 'domain'
 include 'db'
+include 'api-documentation'
 

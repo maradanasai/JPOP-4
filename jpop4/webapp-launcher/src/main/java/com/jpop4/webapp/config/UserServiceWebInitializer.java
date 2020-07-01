@@ -11,7 +11,7 @@ public class UserServiceWebInitializer extends AbstractWebInitializer {
         return new Class[] {
                 UserConfig.class,
                 UserScreenConfig.class,
-                ScreenCommonConfig.class
+                ScreenCommonConfig.class,
         };
     }
 }
