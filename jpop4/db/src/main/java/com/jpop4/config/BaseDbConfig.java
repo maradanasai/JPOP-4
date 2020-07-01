@@ -19,6 +19,7 @@ import org.springframework.transaction.support.TransactionTemplate;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
+import java.util.Map;
 
 
 @PropertySource("classpath:db.properties")
@@ -26,6 +27,9 @@ import javax.sql.DataSource;
 @EnableJpaRepositories(basePackages = "com.jpop4.domain.repository")
 @EnableTransactionManagement
 public class BaseDbConfig {
+
+    // just for dev testing purposes
+    private static final Map<String, String> JPA_DEV_PROPS = Map.of("hibernate.hbm2ddl.auto", "update");
 
     @Value("${db.url}")
     private String url;
@@ -67,10 +71,10 @@ public class BaseDbConfig {
 
         factory.setJpaVendorAdapter(jpaVendorAdapter);
         factory.setPackagesToScan(getJpaPackagesToScan());
-
         factory.setDataSource(dataSource);
-
+        factory.setJpaPropertyMap(JPA_DEV_PROPS);
         factory.afterPropertiesSet();
+
         return factory.getObject();
     }
 
