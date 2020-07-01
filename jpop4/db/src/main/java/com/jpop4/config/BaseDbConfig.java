@@ -1,10 +1,12 @@
 package com.jpop4.config;
 
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -18,10 +20,21 @@ import org.springframework.transaction.support.TransactionTemplate;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
-@EnableJpaRepositories(basePackages = "com.jpop4.domain.repository")
+
+@PropertySource("classpath:db.properties")
 @Configuration
+@EnableJpaRepositories(basePackages = "com.jpop4.domain.repository")
 @EnableTransactionManagement
 public class BaseDbConfig {
+
+    @Value("${db.url}")
+    private String url;
+
+    @Value("${db.username}")
+    private String username;
+
+    @Value("${db.password}")
+    private String password;
 
     @Bean
     public TransactionTemplate transactionTemplate(PlatformTransactionManager platformTransactionManager) {
@@ -39,9 +52,9 @@ public class BaseDbConfig {
     @Primary
     public DataSource dataSource() {
         DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
-        dataSourceBuilder.url("jdbc:mysql://localhost:3306/jpop4?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false");
-        dataSourceBuilder.username("root");
-        dataSourceBuilder.password("root");
+        dataSourceBuilder.url(url);
+        dataSourceBuilder.username(username);
+        dataSourceBuilder.password(password);
         return dataSourceBuilder.build();
     }
 

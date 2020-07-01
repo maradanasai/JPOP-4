@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
 
 @ControllerAdvice
 public class GlobalBEControllerExceptionHandler {
@@ -42,6 +44,21 @@ public class GlobalBEControllerExceptionHandler {
         setStackTrace(errorDto, exception);
 
         return new ResponseEntity<>(errorDto, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(value = HttpRequestMethodNotSupportedException.class)
+    @ResponseBody
+    public ResponseEntity<ErrorDto> handleDetailedValidationException(HttpRequestMethodNotSupportedException exception) {
+        if (LOG.isTraceEnabled()) {
+            LOG.trace("method not supported exception", exception);
+        }
+
+        LOG.info(exception.toString());
+
+        ErrorDto errorDto = new ErrorDto("Error: Invalid URL or following operation wouldn't supported");
+        setStackTrace(errorDto, exception);
+
+        return new ResponseEntity<>(errorDto, HttpStatus.METHOD_NOT_ALLOWED);
     }
 
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)

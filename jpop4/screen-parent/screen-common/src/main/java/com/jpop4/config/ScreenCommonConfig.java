@@ -3,10 +3,9 @@ package com.jpop4.config;
 
 import com.jpop4.error.resolver.ErrorResolver;
 import com.jpop4.i18n.MessageResolver;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.context.MessageSource;
+import org.springframework.context.annotation.*;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 
 
 @EnableAspectJAutoProxy
@@ -19,6 +18,14 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
         "com.jpop4.validation",
 })
 public class ScreenCommonConfig {
+
+    @Bean
+    public MessageSource messageSource() {
+        ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
+        messageSource.setBasenames("classpath:messages");
+        messageSource.setDefaultEncoding("UTF-8");
+        return messageSource;
+    }
 
     @Bean
     public MessageResolver messageResolver() {
