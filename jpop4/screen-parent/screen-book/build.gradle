@@ -1,0 +1,12 @@
+plugins {
+    id 'java'
+}
+
+dependencies {
+    compile project(':screen-parent:screen-common')
+    compile project(':backendservice-parent:book:book-service-api')
+
+    compile 'org.springframework:spring-context:5.2.7.RELEASE'
+    compile 'org.springframework:spring-web:5.2.7.RELEASE'
+    compile 'org.springframework:spring-webmvc:5.2.7.RELEASE'
+}

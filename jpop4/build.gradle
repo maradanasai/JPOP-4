@@ -1,0 +1,36 @@
+plugins {
+	id 'org.springframework.boot' version '2.3.1.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'java'
+	id 'idea'
+}
+
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+allprojects {
+	repositories {
+		mavenCentral()
+	}
+}
+
+dependencies {
+	compile project(':backendservice-parent:book:book-service-api')
+	compile project(':backendservice-parent:book:book-service')
+	compile project(':screen-parent:screen-book')
+	compile project(':screen-parent:screen-common')
+	compile project(':domain')
+	compile project(':db')
+
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+}
+
+test {
+	useJUnitPlatform()
+}

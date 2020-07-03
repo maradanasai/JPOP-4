@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+}
+
+ext {
+    mapstructVersion = "1.3.1.Final"
+    lombokVersion = "1.18.12"
+}
+
+dependencies {
+    compile project(':backendservice-parent:user:user-service-api')
+    compile project(':domain')
+
+    compileOnly "org.mapstruct:mapstruct:${mapstructVersion}"
+    annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
+
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+
+    compile 'org.springframework:spring-context:5.2.7.RELEASE'
+    compile 'org.springframework.data:spring-data-commons:2.3.1.RELEASE'
+
+    testCompile 'junit:junit:4.12'
+}
+
+compileJava {
+    options.compilerArgs << '-Amapstruct.suppressGeneratorTimestamp=true'
+    options.compilerArgs << '-Amapstruct.suppressGeneratorVersionInfoComment=true'
+    options.compilerArgs << '-Amapstruct.unmappedTargetPolicy=IGNORE'
+    options.compilerArgs << '-Amapstruct.defaultComponentModel=spring'
+}
